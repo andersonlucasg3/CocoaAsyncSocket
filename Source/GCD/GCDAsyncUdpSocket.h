@@ -1019,6 +1019,9 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
 + (BOOL)getHost:(NSString * __nullable * __nullable)hostPtr port:(uint16_t * __nullable)portPtr fromAddress:(NSData *)address;
 + (BOOL)getHost:(NSString * __nullable * __nullable)hostPtr port:(uint16_t * __nullable)portPtr family:(int * __nullable)afPtr fromAddress:(NSData *)address;
 
++ (void)convertIntefaceDescription:(NSString *)interfaceDescription port:(uint16_t)port intoAddress4:(NSData *_Nullable*_Nullable)interfaceAddr4Ptr address6:(NSData *_Nullable*_Nullable)interfaceAddr6Ptr;
++ (void)convertNumericHost:(NSString *)numericHost port:(uint16_t)port intoAddress4:(NSData *_Nullable*_Nullable)addr4Ptr address6:(NSData *_Nullable*_Nullable)addr6Ptr;
+
 @end
 
 NS_ASSUME_NONNULL_END

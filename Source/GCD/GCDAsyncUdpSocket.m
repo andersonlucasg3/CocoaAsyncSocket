@@ -1415,7 +1415,7 @@ enum GCDAsyncUdpSocketConfig
  * Finds the address(es) of an interface description.
  * An inteface description may be an interface name (en0, en1, lo0) or corresponding IP (192.168.4.34).
 **/
-- (void)convertIntefaceDescription:(NSString *)interfaceDescription
++ (void)convertIntefaceDescription:(NSString *)interfaceDescription
                               port:(uint16_t)port
                       intoAddress4:(NSData **)interfaceAddr4Ptr
                           address6:(NSData **)interfaceAddr6Ptr
@@ -1564,7 +1564,7 @@ enum GCDAsyncUdpSocketConfig
  * Converts a numeric hostname into its corresponding address.
  * The hostname is expected to be an IPv4 or IPv6 address represented as a human-readable string. (e.g. 192.168.4.34)
 **/
-- (void)convertNumericHost:(NSString *)numericHost
++ (void)convertNumericHost:(NSString *)numericHost
                       port:(uint16_t)port
               intoAddress4:(NSData **)addr4Ptr
                   address6:(NSData **)addr6Ptr
@@ -2835,7 +2835,7 @@ enum GCDAsyncUdpSocketConfig
 		NSData *interface4 = nil;
 		NSData *interface6 = nil;
 		
-		[self convertIntefaceDescription:interface port:port intoAddress4:&interface4 address6:&interface6];
+		[GCDAsyncUdpSocket convertIntefaceDescription:interface port:port intoAddress4:&interface4 address6:&interface6];
 		
 		if ((interface4 == nil) && (interface6 == nil))
 		{
@@ -3433,7 +3433,7 @@ enum GCDAsyncUdpSocketConfig
 		NSData *groupAddr4 = nil;
 		NSData *groupAddr6 = nil;
 		
-		[self convertNumericHost:group port:0 intoAddress4:&groupAddr4 address6:&groupAddr6];
+		[GCDAsyncUdpSocket convertNumericHost:group port:0 intoAddress4:&groupAddr4 address6:&groupAddr6];
 		
 		if ((groupAddr4 == nil) && (groupAddr6 == nil))
 		{
@@ -3448,7 +3448,7 @@ enum GCDAsyncUdpSocketConfig
 		NSData *interfaceAddr4 = nil;
 		NSData *interfaceAddr6 = nil;
 		
-		[self convertIntefaceDescription:interface port:0 intoAddress4:&interfaceAddr4 address6:&interfaceAddr6];
+		[GCDAsyncUdpSocket convertIntefaceDescription:interface port:0 intoAddress4:&interfaceAddr4 address6:&interfaceAddr6];
 		
 		if ((interfaceAddr4 == nil) && (interfaceAddr6 == nil))
 		{
